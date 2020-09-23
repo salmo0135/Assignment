@@ -70,7 +70,7 @@ class Maze:
         random_col = 0
         random_col_index = 100
         
-        while random_col != "*":
+        while random_col != " ":
             random_line_index = randrange(len(self._grid))
             random_col_index = randrange(len(self._grid[random_line_index]))
             random_col = self._grid[random_line_index][random_col_index]
