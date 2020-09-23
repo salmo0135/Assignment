@@ -31,7 +31,7 @@ class Maze:
             line_list = [char for char in line]
             self._grid.append(line_list)
             
-
+    @classmethod
     def check(self, line_num, col_num):
         """
         Check if coordinate is an empty space or wall
@@ -50,7 +50,7 @@ class Maze:
         else:
             return True
         
-
+    @classmethod
     def display(self):
         """
         Prints the grid on the screen
@@ -58,6 +58,7 @@ class Maze:
         for line in self._grid:
             print("".join(line))
 
+    @classmethod        
     def find_random_spot(self):
         """
         Finds a random open spot in the maze
