@@ -43,6 +43,7 @@ class Maze:
             random_col = self._grid[random_line_index][random_col_index]
         
         coordinates = (random_line_index, random_col_index)
+        return coordinates
         
     
             
