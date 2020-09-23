@@ -10,6 +10,17 @@ from random import randrange
 
 
 class Maze:
+    
+    """ 
+    Nested list created from file representing maze
+    :param filename: file with maze on it
+    :type filename: string
+    
+    :param _grid: nested list representing maze coordinates
+    :type _grid: list
+    
+    """
+    
     def __init__(self, _filename, _grid):
         self.file = open(_filename, 'r')
         self._grid = []
@@ -22,17 +33,38 @@ class Maze:
             
 
     def check(self, line_num, col_num):
-        if self._grid[line_num, col_num] == "X":
+        """
+        Check if coordinate is an empty space or wall
+        :param line_num: establishes line number in grid
+        :type line_num: integer
+        
+        :param col_num: establishes column number in grid
+        :type col_num: integer
+        
+        :return: False if coordinates are a wall, True if empty space
+        :rtype: bool
+        
+        """
+        if self._grid[line_num][col_num] == "X":
             return False
         else:
             return True
         
 
     def display(self):
+        """
+        Prints the grid on the screen
+        """
         for line in self._grid:
             print("".join(line))
 
     def find_random_spot(self):
+        """
+        Finds a random open spot in the maze
+        
+        :return: coordinates for open spot
+        :rtype: tuple
+        """
         random_line_index = []
         random_col = 0
         random_col_index = 100
