@@ -7,6 +7,7 @@ Luke
 """
 
 from random import randrange
+STARTING_POINT_OF_PLAYER = 'p' ;
 
 
 class Maze:
@@ -30,9 +31,17 @@ class Maze:
             line = line.strip('\n')
             line_list = [char for char in line]
             self._grid.append(line_list)
-            
-    @classmethod
-    def check(self, line_num, col_num):
+         #-- placing the player at the very start
+        _grid[0][0] = STARTING_POINT_OF_PLAYER;
+
+    #--- Rename the check method to can_move_to
+    """
+        if the location is a wall return False
+        otherwise return True
+    """
+
+    #--@classmethod doesnt need to be a class method likewise for every other class method
+    def can_move_to(self, line_num, col_num):
         """
         Check if coordinate is an empty space or wall
         :param line_num: establishes line number in grid
@@ -77,7 +86,28 @@ class Maze:
         
         coordinates = (random_line_index, random_col_index)
         return coordinates
+
+
+    #--add random items
+    """
+        item = ['S','H','R','M']
+        for i in item
+            coordinates = find_random_spot()
+            _grid(coordinates) = i
+    """
+
+    """
+    def is_item(self):
+        if self.grind[row][col] == randomItem:
+            return True
+        else:
+            return False   
         
+     """
+    """
+    
+    """
+
     
             
 
