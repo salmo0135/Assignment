@@ -6,13 +6,14 @@ Luke
 """
 
 from random import randrange
-STARTING_POINT_OF_PLAYER = 'p'
+from player import Player
+POINT_OF_PLAYER = 'P'
+POINT_OF_EXIT = 'E'
 
 
 class Maze:
     """ 
     Nested list created from text file representing a maze
-
     :param filename: text file containing maze
     :type filename: string
     """
@@ -32,7 +33,9 @@ class Maze:
             line_list = [char for char in line]
             self._grid.append(line_list)
          # -- placing the player at the very start
-        self._grid[6][0] = STARTING_POINT_OF_PLAYER
+        player = Player(6,0)
+        self._grid[player._x][player._y] = POINT_OF_PLAYER
+        self._grid[1][-1] = POINT_OF_EXIT
         
         
 
@@ -46,7 +49,6 @@ class Maze:
     def can_move_to(self, line_num, col_num):
         """
         Check if coordinate is an empty space or wall
-
         :param line_num: establishes line number in grid
         :type line_num: integer
         
@@ -57,10 +59,10 @@ class Maze:
         :rtype: bool
         """
         # -- checks if the coordinate is an empty space
-        if self._grid[line_num][col_num] == "X":
-            return False
-        else:
+        if self._grid[line_num][col_num] == " ":
             return True
+        else:
+            return False
         
     def display(self):
         """
@@ -109,7 +111,7 @@ class Maze:
         # -- loops through item list and adds them to the maze
         for i in item:
             x_coordinate, y_coordinate = self.find_random_spot()
-            self.grid[x_coordinate][y_coordinate] = i
+            self._grid[x_coordinate][y_coordinate] = i
             print(x_coordinate, y_coordinate)
         print(self._grid)
 
@@ -118,19 +120,37 @@ class Maze:
     def is_item(self, x_coordinate, y_coordinate):
         """
         If the location requested is a random item, return True
-
         :param x_coordinate: x coordinate of the location requested
         :type x_coordinate: integer
-
         :param y_coordinate: y coordinate of the location requested
         :type y_coordinate: integer
-
         :return: return False if the location requested is not a random item, else return True
         :rtype: bool
         """
         if self.grid[x_coordinate][y_coordinate] == "X" or self.grid[x_coordinate][y_coordinate] == " ":
             return False
+        
+        elif self._grid[x_coordinate][y_coordinate] == POINT_OF_PLAYER or self_.grid[x_coordinate][y_coordinate] == POINT_OF_EXIT:
+            return False
+
         else:
             return True
-        
     
+    def player_location(self):
+        """
+        Tracks player locations, returns x and y coordinate
+        """
+        for line in self._grid:
+            for i in line:
+                if i == POINT_OF_PLAYER:
+                    return line, i
+
+    
+    def is_exit(self, x_coordinate, y_coordinate):
+        """
+        If the location requested is the exit, return True
+        """
+        if self._grid[x_coordinate][y_coordinate] == POINT_OF_EXIT:
+            return True
+        else:
+            return False
