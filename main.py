@@ -8,7 +8,7 @@ def main():
     maze.add_items()
     for line in maze.grid:
             print(''.join(line))
-    cmd = input()
+    cmd = ""
     while cmd != "q" and end == False:
         cmd = input()
         x, y = maze.player_location()
