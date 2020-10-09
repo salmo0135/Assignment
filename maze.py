@@ -33,8 +33,8 @@ class Maze:
             line_list = [char for char in line]
             self._grid.append(line_list)
          # -- placing the player at the very start
-        player = Player(6,0)
-        self._grid[player._x][player._y] = POINT_OF_PLAYER
+        self._player = Player(6,1)
+        self._grid[self._player._x][self._player._y] = POINT_OF_PLAYER
         self._grid[1][-1] = POINT_OF_EXIT
         
         
@@ -111,9 +111,8 @@ class Maze:
         # -- loops through item list and adds them to the maze
         for i in item:
             x_coordinate, y_coordinate = self.find_random_spot()
-            self._grid[x_coordinate][y_coordinate] = i
-            print(x_coordinate, y_coordinate)
-        print(self._grid)
+            self.grid[x_coordinate][y_coordinate] = i
+
 
 
    
@@ -127,10 +126,7 @@ class Maze:
         :return: return False if the location requested is not a random item, else return True
         :rtype: bool
         """
-        if self.grid[x_coordinate][y_coordinate] == "X" or self.grid[x_coordinate][y_coordinate] == " ":
-            return False
-        
-        elif self._grid[x_coordinate][y_coordinate] == POINT_OF_PLAYER or self_.grid[x_coordinate][y_coordinate] == POINT_OF_EXIT:
+        if self.grid[x_coordinate][y_coordinate] == "X" or self.grid[x_coordinate][y_coordinate] == " " or self.grid[x_coordinate][y_coordinate] == POINT_OF_PLAYER or self.grid[x_coordinate][y_coordinate] == POINT_OF_EXIT:
             return False
 
         else:
@@ -140,17 +136,23 @@ class Maze:
         """
         Tracks player locations, returns x and y coordinate
         """
-        for line in self._grid:
+        x = 0
+        y = 0
+        for line in self.grid:
             for i in line:
-                if i == POINT_OF_PLAYER:
-                    return line, i
+                if i == "P":
+                    return x, y
+                    
+                y+=1
+            x += 1
+            y = 0
 
     
     def is_exit(self, x_coordinate, y_coordinate):
         """
         If the location requested is the exit, return True
         """
-        if self._grid[x_coordinate][y_coordinate] == POINT_OF_EXIT:
+        if self.grid[x_coordinate][y_coordinate] == POINT_OF_EXIT:
             return True
         else:
             return False
