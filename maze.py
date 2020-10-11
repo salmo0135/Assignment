@@ -100,7 +100,7 @@ class Maze:
     
     @grid.setter
     def grid(self, value):
-        self._grid = value
+        self._grid.append(value)
     
     def add_items(self):
         """

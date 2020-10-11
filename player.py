@@ -21,4 +21,28 @@ class Player:
         self._backpack = []
         self._x = x_coordinate
         self._y = y_coordinate
-        pass
+
+
+    @property
+    def backpack(self):
+        return self._backpack
+
+    @backpack.setter
+    def backpack(self,value):
+        self._backpack.append(value)
+
+    @property
+    def x(self):
+        return self._x
+
+    @x.setter
+    def x(self,value):
+        self._x = value
+
+    @property
+    def y(self):
+        return self._y
+
+    @x.setter
+    def y(self, value):
+        self._y = value
