@@ -5,6 +5,7 @@ Ijaz
 Luke
 """
 
+# -- initialization of backpack list
 backpack = []
 
 class Player:
@@ -22,27 +23,32 @@ class Player:
         self._x = x_coordinate
         self._y = y_coordinate
 
-
+    # -- backpack getter
     @property
     def backpack(self):
         return self._backpack
 
+    # -- sets backpack attribute
     @backpack.setter
     def backpack(self,value):
         self._backpack.append(value)
 
+    # -- x-coordinate getter
     @property
     def x(self):
         return self._x
 
+    # -- sets x-coordinate value
     @x.setter
     def x(self,value):
         self._x = value
 
+    # -- y-coordinate getter
     @property
     def y(self):
         return self._y
 
+    # -- sets  y-coordinate value
     @y.setter
     def y(self, value):
         self._y = value
