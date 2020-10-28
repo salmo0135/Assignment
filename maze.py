@@ -36,14 +36,7 @@ class Maze:
         self._player = Player(6,1)
         self._grid[self._player._x][self._player._y] = POINT_OF_PLAYER
         self._grid[1][-1] = POINT_OF_EXIT
-        
-        
 
-    # --- Rename the check method to can_move_to
-        """ 
-        :return: return False if the location is a wall, otherwise return True
-        :rtype: bool
-        """
 
     #--@classmethod doesnt need to be a class method likewise for every other class method
     def can_move_to(self, line_num, col_num):
