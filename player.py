@@ -43,6 +43,6 @@ class Player:
     def y(self):
         return self._y
 
-    @x.setter
+    @y.setter
     def y(self, value):
         self._y = value
